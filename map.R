@@ -4,16 +4,14 @@
 library(ggplot2)
 library(maps)
 
-lines <- readLines("C:\\pz\\jupyter notebook\\hj\\k.txt")   ##filename.txtÊÇÎÄ¼þÃû
 
 map <- function(superfamily){
-  path=paste("C:\\pz\\jupyter notebook\\hj\\data\\",superfamily,sep="")
+  path=(superfamily,".csv",sep="")
 # make Run location dataset
   all.run.set <- read.csv(path,header = T)
   all.run.set <- all.run.set[order(all.run.set[,3],decreasing = T),]
   bradymonadales.yes <- all.run.set[1:501,]
-  
-  #ÀûÓÃbº¯Êý£¬ÀàËÆÓÚ×ª»»×Öµä£¬ÓÃlapplyº¯Êý×ª»»»·¾³ÀàÐÍÎªÑÕÉ«ÀàÐÍlist c  È»ºó½«µã±ßÔµÑÕÉ«¶¨ÒåÎªc
+
   a<-bradymonadales.yes[,6]
   b<-function(i){
     switch(i,
@@ -45,7 +43,7 @@ map <- function(superfamily){
   
   #p <- p + scale_x_continuous(labels = NULL,breaks = NULL)
   
-  #È¥³ýºá×Ý×ø±êÖá
+  #åŽ»é™¤æ¨ªçºµåæ ‡è½´
   
   theme(axis.title.y=element_blank(),
         axis.title.x=element_blank(),
@@ -63,20 +61,17 @@ map <- function(superfamily){
                     fill = guide_legend(label.position = "bottom",
                                         label.theme = element_text(angle = 0, hjust = 0.5, vjust = 0.6),
                                         nrow = 1,
-                                        override.aes = list(size=6),#ÓÃÀ´ÉèÖÃÍ¼ÀýÖÐÍ¼ÐÎµÄ²ÎÊý
+                                        override.aes = list(size=6),
                                         title = "Environmental type",
   
-                                        title.theme = element_text(face = "bold"),#ÓÃÀ´ÉèÖÃÍ¼ÀýÖÐ×ÖÌåµÄ²ÎÊý
-                                        title.position = "top",#ÓÃÀ´ÉèÖÃÍ¼ÀýÖÐ×ÖÌåµÄÎ»ÖÃ
+                                        title.theme = element_text(face = "bold"),
+                                        title.position = "top",
                                         title.hjust = 0.5))
-  path2<<-paste("C:\\pz\\jupyter notebook\\hj\\map\\figures\\",superfamily,"_map.png",sep="")
+  path2<<-paste(superfamily,"_map.png",sep="")
   ggsave(path2,units = "in",width = 8.27, height = 4.8)}
 
 
-lines=c("cl35085","cl17037","cl00011")
-for (i in lines){
-  map(i)
-}
+map(map_demo)
 
 
 
