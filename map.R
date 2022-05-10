@@ -42,8 +42,7 @@ map <- function(superfamily){
   #p <- p + scale_y_discrete(labels = NULL,breaks = NULL)
   
   #p <- p + scale_x_continuous(labels = NULL,breaks = NULL)
-  
-  #去除横纵坐标轴
+
   
   theme(axis.title.y=element_blank(),
         axis.title.x=element_blank(),
